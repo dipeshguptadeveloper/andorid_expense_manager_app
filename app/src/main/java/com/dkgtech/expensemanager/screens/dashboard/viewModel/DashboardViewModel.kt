@@ -7,6 +7,10 @@ import com.dkgtech.expensemanager.repo.ExpenseRepo
 
 class DashboardViewModel(val expenseRepo: ExpenseRepo) : ViewModel() {
 
+    fun addExpense(newExpense: ExpenseModel) {
+        expenseRepo.addExpense(newExpense)
+    }
+
     fun getAllExpense(): LiveData<List<ExpenseModel>> {
         return expenseRepo.getAllExpense()
     }

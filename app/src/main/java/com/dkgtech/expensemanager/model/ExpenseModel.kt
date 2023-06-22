@@ -3,6 +3,7 @@ package com.dkgtech.expensemanager.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.dkgtech.expensemanager.screens.dashboard.DashboardActivity
 
 @Entity(tableName = "expense")
 data class ExpenseModel(
@@ -15,4 +16,13 @@ data class ExpenseModel(
     @ColumnInfo(name = "cat_type") val catType: Int,
     @ColumnInfo(name = "date") val date: String
 
-)
+) {
+    fun getImg(id: Int): Int {
+        for (cat in DashboardActivity.arrCat) {
+            if (cat.id == id) {
+                return cat.imgPath
+            }
+        }
+        return 0
+    }
+}
